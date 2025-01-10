@@ -150,12 +150,13 @@ class MonthItemState extends State<MonthItem> {
                                 ),
                                 IgnorePointer(
                                   child: EventsOverlay(
-                                    eventBuilder: widget.eventBuilder, 
+                                    eventBuilder: widget.eventBuilder,
+                                    maxLines: widget.maxEventLines,
                                     topPadding: widget.eventTopPadding ??
                                         (itemHeight /
                                             Contract.kDayItemTopPaddingCoef),
                                     itemWidth: itemWidth,
-                                    itemHeight: itemHeight, 
+                                    itemHeight: itemHeight,
                                     begin: _beginRange,
                                     weekList: _weeksEvents,
                                   ),
@@ -177,7 +178,7 @@ class MonthItemState extends State<MonthItem> {
   void _updateState() => setState(() {});
 
   Size _getConstrainedSize(BoxConstraints constraint) {
-    final itemWidth = constraint.maxWidth / WeekDay.values.length; 
+    final itemWidth = constraint.maxWidth / WeekDay.values.length;
     double itemHeight;
     if ((constraint.maxHeight / _weekCount) > itemWidth) {
       itemHeight = constraint.maxHeight / _weekCount;
@@ -189,9 +190,9 @@ class MonthItemState extends State<MonthItem> {
         itemHeight = constraint.maxHeight / _weekCount;
       } else {
         itemHeight = itemWidth;
-      } 
+      }
     }
-    return Size(itemWidth, 300);
+    return Size(itemWidth, itemHeight);
   }
 
   /// Builds MonthCalendarWidget
