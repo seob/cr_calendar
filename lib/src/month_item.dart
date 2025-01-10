@@ -178,8 +178,7 @@ class MonthItemState extends State<MonthItem> {
   void _updateState() => setState(() {});
 
   Size _getConstrainedSize(BoxConstraints constraint) {
-    //final itemWidth = constraint.maxWidth / WeekDay.values.length;
-     final itemWidth = 200/ WeekDay.values.length;
+    final itemWidth = constraint.maxWidth / WeekDay.values.length; 
     double itemHeight;
     if ((constraint.maxHeight / _weekCount) > itemWidth) {
       itemHeight = constraint.maxHeight / _weekCount;
@@ -187,11 +186,12 @@ class MonthItemState extends State<MonthItem> {
       final isAdaptive =
           DatePickerSettings.of(context)?.landscapeDaysResizeMode ==
               LandscapeDaysResizeMode.adaptive;
-      if (isAdaptive) {
-        itemHeight = constraint.maxHeight / _weekCount;
-      } else {
-        itemHeight = itemWidth;
-      }
+      // if (isAdaptive) {
+      //   itemHeight = constraint.maxHeight / _weekCount;
+      // } else {
+      //   itemHeight = itemWidth;
+      // }
+       itemHeight = constraint.maxHeight / _weekCount;
     }
     return Size(itemWidth, itemHeight);
   }
