@@ -152,11 +152,9 @@ class MonthItemState extends State<MonthItem> {
                                   child: EventsOverlay(
                                     eventBuilder: widget.eventBuilder,
                                     maxLines: widget.maxEventLines,
-                                    topPadding: widget.eventTopPadding ??
-                                        (itemHeight /
-                                            Contract.kDayItemTopPaddingCoef),
+                                    topPadding: 0,
                                     itemWidth: itemWidth,
-                                    itemHeight: itemHeight,
+                                    itemHeight: itemHeight, 
                                     begin: _beginRange,
                                     weekList: _weeksEvents,
                                   ),
@@ -186,12 +184,11 @@ class MonthItemState extends State<MonthItem> {
       final isAdaptive =
           DatePickerSettings.of(context)?.landscapeDaysResizeMode ==
               LandscapeDaysResizeMode.adaptive;
-      // if (isAdaptive) {
-      //   itemHeight = constraint.maxHeight / _weekCount;
-      // } else {
-      //   itemHeight = itemWidth;
-      // }
-       itemHeight = constraint.maxHeight / _weekCount;
+      if (isAdaptive) {
+        itemHeight = constraint.maxHeight / _weekCount;
+      } else {
+        itemHeight = itemWidth;
+      } 
     }
     return Size(itemWidth, itemHeight);
   }
