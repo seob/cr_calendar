@@ -152,10 +152,9 @@ class MonthItemState extends State<MonthItem> {
                                   child: EventsOverlay(
                                     eventBuilder: widget.eventBuilder,
                                     maxLines: widget.maxEventLines,
-                                    // topPadding: widget.eventTopPadding ??
-                                    //     (itemHeight /
-                                    //         Contract.kDayItemTopPaddingCoef),
-                                    topPadding: widget.eventTopPadding!,
+                                    topPadding: widget.eventTopPadding ??
+                                        (itemHeight /
+                                            Contract.kDayItemTopPaddingCoef),
                                     itemWidth: itemWidth,
                                     itemHeight: itemHeight,
                                     begin: _beginRange,
