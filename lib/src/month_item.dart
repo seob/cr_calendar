@@ -150,9 +150,10 @@ class MonthItemState extends State<MonthItem> {
                                 ),
                                 IgnorePointer(
                                   child: EventsOverlay(
-                                    eventBuilder: widget.eventBuilder,
-                                    maxLines: widget.maxEventLines,
-                                    topPadding: 0,
+                                    eventBuilder: widget.eventBuilder, 
+                                    topPadding: widget.eventTopPadding ??
+                                        (itemHeight /
+                                            Contract.kDayItemTopPaddingCoef),
                                     itemWidth: itemWidth,
                                     itemHeight: itemHeight, 
                                     begin: _beginRange,
@@ -190,7 +191,7 @@ class MonthItemState extends State<MonthItem> {
         itemHeight = itemWidth;
       } 
     }
-    return Size(itemWidth, itemHeight);
+    return Size(itemWidth, 300);
   }
 
   /// Builds MonthCalendarWidget
